@@ -1,10 +1,18 @@
+// decorators
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+
+// modules
+import { ConfigModule } from '@nestjs/config';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [
+        ConfigModule.forRoot({
+            envFilePath: '.env',
+        }),
+        WeatherModule,
+    ],
+    controllers: [],
+    providers: [],
 })
 export class AppModule {}
